@@ -30,8 +30,10 @@ func Unwrap(err error) error {
 func RootCause(err error) error {
 	root := err
 
+	temp := err
+
 	for {
-		temp := def.Unwrap(err)
+		temp = def.Unwrap(temp)
 
 		if temp == nil {
 			break
@@ -47,10 +49,11 @@ func RootCause(err error) error {
 func Traces(err error) error {
 	traces := []string{err.Error()}
 
+	temp := err
 	i := 0
 	for {
 		i = i + 1
-		temp := def.Unwrap(err)
+		temp = def.Unwrap(temp)
 
 		if temp == nil {
 			break
