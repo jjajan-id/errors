@@ -64,7 +64,7 @@ func Traces(err error) error {
 			pre = fmt.Sprintf("%s ", pre)
 		}
 
-		traces = append(traces, fmt.Sprintf("%s-%s", pre, temp.Error()))
+		traces = append(traces, fmt.Sprintf("%s- %s", pre, temp.Error()))
 	}
 
 	return def.New(strings.Join(traces, "\n"))
